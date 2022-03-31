@@ -1,0 +1,47 @@
+body {
+    background: 	
+    #8a8583;  /* fallback for old browsers */
+    
+
+}
+.row {
+    margin-top: 250px;
+    height: 100vh;
+}
+.image {
+    position: absolute;
+    top: 90px;
+    right: 106px;
+    z-index: -1;
+}
+.image img {
+    width: 350px;
+}
+
+.sosmed ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+li.instagram {
+    background: #111111
+}
+li.Email {
+    background: #111111;
+}
+li > a {
+    text-decoration: none;
+    color: #fff;
+}
+.card {
+    margin: 0px 15px;
+    color: #111111;
+}
+.article {
+    margin-bottom: 100px;
+}
