@@ -1,29 +1,52 @@
-const newLocal = {
+Vue.createApp({
     data() {
         return {
-            header: {
-                nama: "khalda Hafizhah Arina Wafa",
-                location: "Hello i'm indonesian",
-                deskripsi: "Mahasiswa Sistem Informasi Universitas Ahmad Dahlan Yogyakarta"
+            tentangAku : {
+                "nama": "Khalda Hafizhah Arina Wafa",
+                "posisi": "Mahasiswa",
+                "story": "Hay Fweenn, kenalin aku khalda. panggil aja khal atau da, maybe. aku mahasiswa semester 4 universitas ahmad dahlan prodi sisitem informasi.kalo kalian mau kenal aku lebih jauh bisa tap di instagram juga email aku yaa. salam kenal semuanya!",
+                "image": "./img/IMG_2415.JPG"
             },
-            article: [
-                {
-                    image: "./img/Pulau Dewata.jpg",
-                    deskripsi: "Bukan jadi sebuah pertanyaan besar jika pulau tersebut merupakan salah satu pulau yang sangat menyimpan banyak kenangan masa kecil saya didalamnya.",
-                    author: "dibuat oleh khalda hafizhah arina wafa"
-                },
-                {
-                    image: "./img/mental health.jpg",
-                    deskripsi: "Ketertarikan saya terhadap kesehatan mental membuat saya saat ini memiliki banyak ilmu dan pengalaman mengenai hal tersebut.",
-                    author: "dibuat oleh khalda hafizhah arina wafa"
-                },
-                {
-                    image: "./img/alam.jpg",
-                    deskripsi: "Salah satu cara bersyukur menurut saya adalah dengan mencintai dan menjaga alam yang telah Allah titipkan.",
-                    author: "dibuat oleh khalda hafizhah arina wafa"
-                }
-            ]
+            articles: [],
+            article: null,
+        };
+    },
+    methods: {
+        getArticles() {
+            axios
+                .get(
+                    "https://my-json-server.typicode.com/rifkyr990/markdown/articles"
+                )
+                .then((res) => {
+                    this.articles = res.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+        getMarkdown() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const articles = urlParams.get('article');
+            var converter = new showdown.Converter();
+            console.log(articles);
+            axios
+                .get(
+                    src = "https://raw.githubusercontent.com/rifkyr990/markdown/main/article/" + articles
+                )
+                .then((res) => {
+                    var html = converter.makeHtml(res.data);
+                    this.article = html;
+                    console.log(html);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
+    },
+
+    beforeMount() {
+            this.getArticles(),
+            this.getMarkdown()
     }
-}
-Vue.createApp(newLocal).mount('#app')
+}).mount("#app");
