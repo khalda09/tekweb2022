@@ -15,7 +15,7 @@ Vue.createApp({
         getArticles() {
             axios
                 .get(
-                    "https://my-json-server.typicode.com/rifkyr990/markdown/articles"
+                    "https://my-json-server.typicode.com/khalda09/tekweb2022/article"
                 )
                 .then((res) => {
                     this.articles = res.data;
