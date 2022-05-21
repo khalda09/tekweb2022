@@ -32,7 +32,7 @@ Vue.createApp({
             console.log(articles);
             axios
                 .get(
-                    src = "https://raw.githubusercontent.com/rifkyr990/markdown/main/article/" + articles
+                    src = "https://raw.githubusercontent.com/khalda09/tekweb2022/main/article/" + articles
                 )
                 .then((res) => {
                     var html = converter.makeHtml(res.data);
