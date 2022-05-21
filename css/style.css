@@ -28,10 +28,10 @@ li {
     border-radius: 4px;
     margin-right: 6px;
 }
-li.instagram {
+li.Instagram {
     background: #111111
 }
-li.Email {
+li.Email, li.Github {
     background: #111111;
 }
 li > a {
